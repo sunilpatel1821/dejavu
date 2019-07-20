@@ -86,7 +86,8 @@ def fingerprint(channel_samples, Fs=DEFAULT_FS,
     local_maxima = get_2D_peaks(arr2D, plot=False, amp_min=amp_min)
 
     # return hashes
-    return generate_hashes(local_maxima, fan_value=fan_value)
+    return local_maxima
+    # return generate_hashes(local_maxima, fan_value=fan_value)
 
 
 def get_2D_peaks(arr2D, plot=False, amp_min=DEFAULT_AMP_MIN):
@@ -127,6 +128,7 @@ def get_2D_peaks(arr2D, plot=False, amp_min=DEFAULT_AMP_MIN):
         ax.set_ylabel('Frequency')
         ax.set_title("Spectrogram")
         plt.gca().invert_yaxis()
+        plt.savefig('new.png', dpi=100)
         plt.show()
 
     return zip(frequency_idx, time_idx)
